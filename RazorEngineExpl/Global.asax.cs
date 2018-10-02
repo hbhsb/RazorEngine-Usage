@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using RazorEngine;
+using RazorEngine.Compilation.ImpromptuInterface.Optimization;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using RazorEngineExpl.AppCode;
@@ -41,7 +42,8 @@ namespace RazorEngineExpl
             Engine.Razor.Compile(mainPanel, typeof(CommonModel));
             Engine.Razor.Compile(detailCard, typeof(CommonModel));
         }
-        static void Preload()
+
+        private static void Preload()
         {
             var refAssemblies = Assembly.GetExecutingAssembly().GetReferencedAssemblies();
             foreach (AssemblyName refAssembly in refAssemblies)
