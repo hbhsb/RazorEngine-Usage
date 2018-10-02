@@ -1,0 +1,20 @@
+﻿@using System.Data
+@using RazorEngine
+@inherits RazorEngine.Templating.TemplateBase<RazorEngineExpl.Models.CommonModel>
+<table>
+    <thead>
+    <tr>
+        <th>ChildID</th>
+        <th>ChildItem</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (DataRow row in Model.DetailListData.Rows)
+    {
+        <tr>
+            <td>@Raw(row["ChildID"].ToString())</td>
+        </tr>
+    }
+
+    </tbody>
+</table>

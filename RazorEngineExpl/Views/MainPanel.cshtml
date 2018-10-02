@@ -1,0 +1,21 @@
+﻿
+@using System.Data
+@using ModelClassLibrary
+@using RazorEngineExpl.Models
+@inherits RazorEngine.Templating.TemplateBase<RazorEngineExpl.Models.CommonModel>
+<h1>@Model.PrimaryData.TableName</h1>
+主表df
+<h2>@Model.PrimaryData.Rows[0]["id"]</h2>
+<h2>@Model.PrimaryData.Rows[0]["ParentItem"]</h2>
+<table border="1" cellspacing="0">
+    <tr>
+        <td style="background-color: bisque">合同名称：</td>
+        <td>@Model.PrimaryData.Rows[0]["id"]</td>
+    </tr>
+    <tr>
+        <td style="background-color: bisque">合同类型：</td>
+        <td>@Model.PrimaryData.Rows[0]["ParentItem"]</td>
+    </tr>
+</table>
+明细表：
+@Include(AppDomain.CurrentDomain.BaseDirectory + "Views\\DetailCard.cshtml", Model, typeof(CommonModel))
