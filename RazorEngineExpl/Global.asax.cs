@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Data;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Security;
-using System.Security.Permissions;
-using System.Security.Policy;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
 using RazorEngine;
-using RazorEngine.Compilation.ImpromptuInterface.Optimization;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using RazorEngineExpl.AppCode;
@@ -25,9 +14,11 @@ namespace RazorEngineExpl
         {
             Preload();
             //对RazorEngine进行配置
-            var config = new TemplateServiceConfiguration();
-            config.DisableTempFileLocking = true;
-            config.CachingProvider = new DefaultCachingProvider(t => { });
+            var config = new TemplateServiceConfiguration
+            {
+                DisableTempFileLocking = true,
+                CachingProvider = new DefaultCachingProvider(t => { })
+            };
             //config.ReferenceResolver = new MyIReferenceResolver();
             string[] viewFoldersToWatch = { Server.MapPath("~/Views/") };
             config.TemplateManager = new ResolvePathTemplateManager(viewFoldersToWatch);
